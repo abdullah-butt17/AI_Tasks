@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🏍️ Bike Price Predictor HUB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
+<body>
+    <div class="flex-container">
+      
+    <div class="container">
+        <h1>Predict with SVC Model</h1>
+        <form method="POST" action="/predict">
+            <input list="cities" name="City in" placeholder="City in" required>
+            <datalist id="cities">
+                <option value="Karachi">
+                <option value="Islamabad">
+                <option value="Rawalpindi">
+                <option value="Lahore">
+                <option value="Gujranwala">
+                <option value="Faislabad">
+                <option value="Multan">
+                <option value="Hyderabad">
+            </datalist></option></datalist>
+                
+            <input type="number" name="Kilometer ran" placeholder="Kilometer ran 0-500000" min="0" max="500000" required>
+            <input type="number" name="Bike Prices" placeholder="Bike Prices 105000-9500000" min="105000" max="9500000" required>
+            <input list="engine-types" name="Engine type" placeholder="Engine Type" required>
+            <datalist id="engine-types">
+                <option value="Single Cylinder">
+                <option value="Inline-4">
+                <option value="V-Twin">
+                <option value="Twin Cylinder">
+                <option value="Parallel Twin">
+            </datalist>
+            
+            <input type="number" name="Model Year" placeholder="Model Year 1964-2023" min="1964" max="2023" required>
+            <input list="strokes" name="Strokes" placeholder="Strokes" required>
+            <datalist id="strokes">
+                <option value="2-Stroke">
+                <option value="4-Stroke">
+            </datalist>
+            <button type="submit">Predict</button>
+            <br>
+        </form>
+    </div>
+    <div class="predict">
+        <h2>Predicted Bikes:</h2>
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+    </div>
+</body>
+</html>
